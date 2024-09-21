@@ -1,4 +1,6 @@
 import os
+import subprocess
+
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
@@ -7,8 +9,24 @@ from tcn import TCN
 
 #通过openFace提取面部特征
 def video_feature(video_path):
-    path = 'cd /d H:/OpenFace_2.2.0_win_x64 && FeatureExtraction.exe -f ' + video_path + ' -2Dfp'
-    os.system(path)
+    print(f"video_feature: video_path:{video_path} ......")
+    if os.name == "nt":
+        feature_command = r"D:/Programs/OpenFace_2.2.0_win_x64/FeatureExtraction.exe"
+
+    else:
+        feature_command = "FeatureExtraction"
+    args = ["-f", f"{video_path}", "-2Dfp", "-out_dir", "E:/myworkspace/depression/depression/back/video/processed/"]
+
+    # 执行exe程序并传递参数
+    try:
+        print(f"feature_command: {feature_command}, args: {args}")
+        result = subprocess.run([feature_command] + args, check=True, capture_output=True, text=True)
+        # 打印输出结果
+        print(result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred: {e}")
+        print(e.output)
+
 
 #提取HDR特征
 def HDR(video_new_path,HDR_path):
@@ -80,7 +98,7 @@ def HDR(video_new_path,HDR_path):
 
 #将HDR特征送入模型中的出结果
 def video_Model(HDR_path):
-    tcn = tf.keras.models.load_model('H:/depression_system/vidio_1.h5',custom_objects={'TCN':TCN})
+    tcn = tf.keras.models.load_model('E:/myworkspace/depression/depression/back/vidio_1.h5',custom_objects={'TCN':TCN, 'mse': 'mse'})
     df = pd.read_csv(HDR_path,index_col=0)
     time_step = 10
 

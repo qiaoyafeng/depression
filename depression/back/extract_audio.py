@@ -21,8 +21,8 @@ def audio_capture(audio_path,out_path,starttime,endtime):
 
 
 if __name__ == '__main__':
-    video_path = "H:/depression_system/video/42022-04-29_video.mp4"
-    audio_path = 'H:/depression_system/audio/12022-04-29_video_capture.wav'
+    video_path = "E:/myworkspace/depression/depression/back/video/42022-04-29_video.mp4"
+    audio_path = 'E:/myworkspace/depression/depression/back/audio/12022-04-29_video_capture.wav'
     # extract_Audio(video_path,audio_path)
     # out_path = 'H:/depression_system/audio/12022-04-29_video.wav'
     # audio_capture(audio_path,out_path,1,5)

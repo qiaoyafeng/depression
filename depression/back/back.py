@@ -15,7 +15,7 @@ from face import video_feature,HDR,video_Model
 
 app = Flask(__name__) #创建Flask类的实例，第一个参数是模块或者包的名称
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db/db.db'
+app.config['SQLALCHEMY_DATABASE_URI']=r'sqlite:///E:\myworkspace\depression\depression\back\db\db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 
 
@@ -24,8 +24,9 @@ app.config['SECRET_KEY'] = os.urandom(24)
 app.config['SESSION_TYPE'] = 'filesystem'
 CORS(app, supports_credentials=True)
 
-db = SQLAlchemy(app,use_native_unicode='utf8')
+db = SQLAlchemy(app)
 
+openface_out_dir = 'E:/myworkspace/depression/depression/back/video/processed/'
 
 class User( db.Model):
     __tablename__ = 'user'
@@ -150,10 +151,11 @@ def GetScore():
 def GetVideo():
       data = request.files
       file = data['file']
-      Time = datetime.datetime.now().strftime('%Y-%m-%d')
+      Time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
       id = session['user_id']
       name = str(id)+Time
       video_path = UPDATE_PATH_VIDEO+name+'_'+'video.mp4'
+      print(f"GetVideo: {video_path}")
       file.save(video_path)
     #   video_feature_path = UPDATE_PATH_VIDEO+name+'_'+'video_capture.mp4'
       timestart = session['st']
@@ -192,8 +194,8 @@ def GetVideo():
       print("现在正在获得面部初始文件...")
       video_feature(video_path)
       print("获得面部初始文件结束...")
-      video_new_path = 'H:/OpenFace_2.2.0_win_x64/processed/'+name+'_'+'video.csv'
-      HDR_path = 'H:/depression_system/video/'+ name+'_'+'video_capture.csv'
+      video_new_path = openface_out_dir +name+'_'+'video.csv'
+      HDR_path = UPDATE_PATH_VIDEO + name+'_'+'video_capture.csv'
       print("现在正在获得面部HDR文件...")
       HDR(video_new_path,HDR_path)
       print("获得面部HDR文件结束...")
