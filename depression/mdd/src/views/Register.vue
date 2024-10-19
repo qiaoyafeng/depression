@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-25 22:53:16
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-04-29 18:17:05
- * @Description: file content
- * @FilePath: \mdd\src\views\Register.vue
--->
 <template>
   <div class="background">
     <div style="height: 58px;"></div>

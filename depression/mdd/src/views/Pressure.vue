@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 14:19:59
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-04 18:07:55
- * @Description: file content
- * @FilePath: \mdd\src\views\Pressure.vue
--->
 <template>
   <div class="background">
     <div class="pd">

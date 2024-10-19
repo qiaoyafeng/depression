@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 15:39:19
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-04 18:06:32
- * @Description: file content
- * @FilePath: \mdd\src\views\TreatMent.vue
--->
 <template>
   <div class="background">
     <div class="pd">

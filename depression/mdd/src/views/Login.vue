@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-25 19:39:43
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-26 22:48:46
- * @Description: file content
- * @FilePath: \mdd\src\views\Login.vue
--->
 <template>
   <div class="background">
     <div style="height: 58px;"></div>

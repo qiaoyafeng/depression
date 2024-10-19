@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-25 19:16:54
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-28 09:34:06
- * @Description: file content
- * @FilePath: \mdd\src\views\HistoryView.vue
--->
 <template>
   <div class="background">
     <div class="pd">

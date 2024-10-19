@@ -150,7 +150,9 @@ def GetScore():
 @app.route('/video', methods=['POST','GET'])
 def GetVideo():
       data = request.files
+      print(f"video request files: {data}")
       file = data['file']
+      print(f"video request file: {file}")
       Time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
       id = session['user_id']
       name = str(id)+Time
@@ -188,7 +190,7 @@ def GetVideo():
       print("获得音频csv文件结束...")
       print("现在正在跑音频模型...")
       audioScore = audio_Model(audio_feature_csv)
-      print("跑音频模型结束...")
+      print(f"跑音频模型结束...audioScore: {audioScore}")
       
       #面部
       print("现在正在获得面部初始文件...")
@@ -201,7 +203,7 @@ def GetVideo():
       print("获得面部HDR文件结束...")
       print("现在正在视频频模型...")
       videoScore = video_Model(HDR_path)
-      print("视频频模型结束...")
+      print(f"视频频模型结束... videoScore: {videoScore}")
       #决策融合
       Score = session['score']
       score = (float(audioScore)+float(videoScore))/2*0.5+float(Score)*0.5

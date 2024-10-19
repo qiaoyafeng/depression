@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 14:19:59
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-28 09:01:27
- * @Description: file content
- * @FilePath: \mdd\src\views\Introduction.vue
--->
 <template>
   <div class="background">
 

@@ -1,11 +1,3 @@
-/*
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 14:19:59
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-25 15:37:52
- * @Description: file content
- * @FilePath: \mdd\src\main.js
- */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'

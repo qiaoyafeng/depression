@@ -1,12 +1,3 @@
-/*
- * @Autor: Hongting Yuan
- * @Date: 2022-04-27 20:51:45
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-04-27 20:51:46
- * @Description: file content
- * @FilePath: \mdd\src\assets\js\preventReClick.js
- */
-
 export default {
 
   install(Vue) {

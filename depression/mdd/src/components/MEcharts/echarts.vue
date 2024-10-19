@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-26 00:26:52
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-26 22:25:06
- * @Description: file content
- * @FilePath: \mdd\src\components\MEcharts\echarts.vue
--->
 <template>
   <!-- <div class="charttest"> -->
   <div :id="echarts" ref="echarts" class="echarts" :style="{width:meStyle.width,height:meStyle.height}" />
@@ -49,7 +41,6 @@
          * @param {*} newVal
          * @param {*} oldVal
          * @return {*}
-         * @author: Hongting Yuan
          */
         handler (newVal, oldVal) {
           if (this.myChart) {

@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-05 11:24:19
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-04-28 15:32:47
- * @Description: file content
- * @FilePath: \mdd\src\utils\global.vue
--->
 <script>
   const id = 3;
   const other_result_num = 0

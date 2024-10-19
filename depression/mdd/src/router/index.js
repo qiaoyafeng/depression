@@ -1,11 +1,3 @@
-/*
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 14:37:50
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-04-29 12:29:50
- * @Description: file content
- * @FilePath: \mdd\src\router\index.js
- */
 import Vue from 'vue'
 import Router from 'vue-router'
 import Introduction from '@/views/Introduction'

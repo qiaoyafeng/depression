@@ -1,11 +1,3 @@
-/*
- * @Autor: Hongting Yuan
- * @Date: 2022-05-25 15:30:28
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-25 15:30:29
- * @Description: file content
- * @FilePath: \mdd\src\assets\js\devicePixelRatio.js
- */
 class DevicePixelRatio {
   constructor() {
           //this.flag = false;

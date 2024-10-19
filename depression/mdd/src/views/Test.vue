@@ -1,11 +1,3 @@
-<!--
- * @Autor: Hongting Yuan
- * @Date: 2022-04-02 14:59:09
- * @LastEditors: Hongting Yuan
- * @LastEditTime: 2022-05-27 15:38:32
- * @Description: file content
- * @FilePath: \mdd\src\views\Test.vue
--->
 <!-- 改change函数位置 -->
 <template>
   <div>
