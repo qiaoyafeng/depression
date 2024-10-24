@@ -154,44 +154,13 @@ def GetVideo():
       file = data['file']
       print(f"video request file: {file}")
       Time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-      id = session['user_id']
-      name = str(id)+Time
+      name = Time
       video_path = UPDATE_PATH_VIDEO+name+'_'+'video.mp4'
       print(f"GetVideo: {video_path}")
       file.save(video_path)
     #   video_feature_path = UPDATE_PATH_VIDEO+name+'_'+'video_capture.mp4'
-      timestart = session['st']
-      timeend = session['et']
-      
-      audio_path = UPDATE_PATH_AUDIO+name+"audio.wav"
-      print("现在正在分离音频...")
-      extract_Audio(video_path,audio_path)
-      print("分离音频结束...")
-      print("现在正在截取音频...")
-      audio_capture_path = UPDATE_PATH_AUDIO+name+'audio_capture.wav'
-      audio_capture(audio_path,audio_capture_path,timestart,timeend)
 
 
-
-    #   print("现在正在截取视频...")
-    # #   video_capture(timestart,timeend,video_path,video_feature_path)
-    #   print("截取视频结束...")
-
-
-      
-      #音频
-      audio_feature_txt = UPDATE_PATH_AUDIO+name+'audio_feature.txt'
-      print("现在正在获得音频txt文件...")
-      audio_Feature(audio_capture_path,audio_feature_txt)
-      print("获得音频txt文件结束...")
-      audio_feature_csv = UPDATE_PATH_AUDIO+name+'audio_feature.csv'
-      print("现在正在获得音频csv文件...")
-      Feature(audio_feature_txt,audio_feature_csv)
-      print("获得音频csv文件结束...")
-      print("现在正在跑音频模型...")
-      audioScore = audio_Model(audio_feature_csv)
-      print(f"跑音频模型结束...audioScore: {audioScore}")
-      
       #面部
       print("现在正在获得面部初始文件...")
       video_feature(video_path)
@@ -204,14 +173,10 @@ def GetVideo():
       print("现在正在视频频模型...")
       videoScore = video_Model(HDR_path)
       print(f"视频频模型结束... videoScore: {videoScore}")
-      #决策融合
-      Score = session['score']
-      score = (float(audioScore)+float(videoScore))/2*0.5+float(Score)*0.5
-      print("最终的结果"+str(score))
-      history = History(uid=id,time=Time,score = score)
-      db.session.add(history)
-      db.session.commit()
-      data = {'code': 200, 'data':score, 'msg': 'Video success'}
+      # 转换为百分制
+      centesimal_video_score = videoScore/24 * 100
+
+      data = {'code': 200, 'data':int(centesimal_video_score), 'msg': 'Video success'}
       return json.dumps(data)
 
 @app.route('/Time', methods=['POST','GET']) # 使用methods参数处理不同HTTP方法
