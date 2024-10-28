@@ -118,11 +118,11 @@ def video_Model(HDR_path):
 
     predict = tcn.predict(x_test)
     print("面部预测结果")
+    predict_list = []
     for i in range(len(predict)):
-        print(predict[i])
-    x = np.min(predict)
-    print(x)
-    return x
+        predict_list.append(predict[i][0])
+    min_x = np.min(predict)
+    return min_x, predict_list
 
 
 

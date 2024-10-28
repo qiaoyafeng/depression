@@ -171,12 +171,13 @@ def GetVideo():
       HDR(video_new_path,HDR_path)
       print("获得面部HDR文件结束...")
       print("现在正在视频频模型...")
-      videoScore = video_Model(HDR_path)
-      print(f"视频频模型结束... videoScore: {videoScore}")
+      min_video_score, video_scores = video_Model(HDR_path)
+      print(f"视频频模型结束... video_scores: {video_scores}")
+      print(f"视频频模型结束... min_video_score: {min_video_score}")
       # 转换为百分制
-      centesimal_video_score = videoScore/24 * 100
-
-      data = {'code': 200, 'data':int(centesimal_video_score), 'msg': 'Video success'}
+      centesimal_min_video_score = min_video_score/24 * 100
+      centesimal_video_scores = [int((x / 24) * 100) for x in video_scores]
+      data = {'code': 200, 'data': int(centesimal_min_video_score), 'msg': 'Video success', "video_scores": centesimal_video_scores}
       return json.dumps(data)
 
 @app.route('/Time', methods=['POST','GET']) # 使用methods参数处理不同HTTP方法
