@@ -177,7 +177,24 @@ def GetVideo():
       # 转换为百分制
       centesimal_min_video_score = min_video_score/24 * 100
       centesimal_video_scores = [int((x / 24) * 100) for x in video_scores]
-      data = {'code': 200, 'data': int(centesimal_min_video_score), 'msg': 'Video success', "video_scores": centesimal_video_scores}
+      threshold = 35
+      count_gt_threshold = sum(1 for x in centesimal_video_scores if x >= threshold)
+
+      if count_gt_threshold > 1:
+          depression_state = "抑郁"
+          depression_score = int(sum(x for x in centesimal_video_scores if x > threshold) / count_gt_threshold)
+      elif count_gt_threshold == 1:
+          depression_state = "抑郁，有抑郁风险。"
+          depression_score = int(sum(centesimal_video_scores) / len(centesimal_video_scores))
+      else:
+          depression_state = "正常"
+          depression_score = int(sum(centesimal_video_scores) / len(centesimal_video_scores))
+
+      diagnosis = {
+          "depression_state": depression_state,
+          "depression_score": depression_score
+      }
+      data = {'code': 200, 'data': int(centesimal_min_video_score), 'msg': 'Video success', "video_scores": centesimal_video_scores, "diagnosis": diagnosis}
       return json.dumps(data)
 
 @app.route('/Time', methods=['POST','GET']) # 使用methods参数处理不同HTTP方法
